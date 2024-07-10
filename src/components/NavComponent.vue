@@ -1,14 +1,14 @@
 <template>
   <nav class="w-full bg-transparent border-gray-200 dark:bg-transparent">
-    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-      <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
+    <div class="flex flex-wrap items-center justify-between mx-auto p-4">
+      <a class="flex items-left space-x-3 rtl:space-x-reverse cursor-pointer">
         <LogoIcon />
         <span class="self-center text-2xl font-semibold whitespace-nowrap black"
           >Minecraft Cords</span
         >
       </a>
       <div class="flex md:order-2">
-        <div class="relative hidden md:block">
+        <div class="relative block">
           <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
             <svg
               class="w-4 h-4 text-gray-500 dark:text-gray-400"
@@ -40,5 +40,5 @@
 </template>
 
 <script setup lang="ts">
-import LogoIcon from '../components/icons/LogoIcon.vue'
+import LogoIcon from '../components/icons/LogoIcon.vue';
 </script>

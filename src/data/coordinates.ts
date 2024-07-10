@@ -1,4 +1,6 @@
-export const initial_overworlds_coords = [
+import type { Coordinates } from '@/interfaces/coordinates.interface';
+
+export const initial_overworlds_coords: Coordinates[] = [
   {
     x: -63,
     y: -17,
@@ -81,7 +83,7 @@ export const initial_overworlds_coords = [
   }
 ];
 
-export const initial_nether_coords = [
+export const initial_nether_coords: Coordinates[] = [
   {
     x: -63,
     y: -17,
@@ -164,7 +166,7 @@ export const initial_nether_coords = [
   }
 ];
 
-export const initial_end_coords = [
+export const initial_end_coords: Coordinates[] = [
   {
     x: -63,
     y: -17,

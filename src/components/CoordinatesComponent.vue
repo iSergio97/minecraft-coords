@@ -1,4 +1,3 @@
-import { Coordinates } from '../interfaces/coordinates.interface';
 <template>
   <div
     class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
@@ -30,7 +29,10 @@ import { Coordinates } from '../interfaces/coordinates.interface';
         >)
       </p>
     </div>
-    <a href="#" class="inline-flex font-medium items-center text-blue-600 hover:underline">
+    <a
+      class="inline-flex font-medium items-center text-blue-600 hover:underline"
+      @click="openEditModal()"
+    >
       Editar
       <svg
         class="w-3 h-3 ms-2.5 rtl:rotate-[270deg]"
@@ -48,17 +50,35 @@ import { Coordinates } from '../interfaces/coordinates.interface';
         />
       </svg>
     </a>
+
+    <ModalComponent :coord="coord" @close="closeEditModal()" v-if="dialogOpenModal" />
   </div>
 </template>
 
 <script setup lang="ts">
 import type { Coordinates } from '@/interfaces/coordinates.interface';
-import { toRefs } from 'vue';
+import { ref, toRefs } from 'vue';
+import ModalComponent from './ModalComponent.vue';
+
 interface Props {
   coord: Coordinates;
 }
 
+type Emits = (e: 'refreshData', world: string) => void;
+
 const props = defineProps<Props>();
+const emit = defineEmits<Emits>();
 
 const { coord } = toRefs(props);
+
+let dialogOpenModal = ref(false);
+
+let openEditModal = (): void => {
+  dialogOpenModal.value = true;
+};
+
+let closeEditModal = (): void => {
+  dialogOpenModal.value = false;
+  emit('refreshData', coord.value.dimension);
+};
 </script>

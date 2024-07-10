@@ -1,14 +1,14 @@
 <template>
   <div class="w-full h-full">
-    <h3 class="text-2xl flex flex-initial pl-2 dark_green shadow">Overworld</h3>
+    <h3 class="text-5xl pl-2 dark_green shadow pb-1">Overworld</h3>
     <OverworldComponent />
   </div>
-  <div class="w-full h-full">
-    <h3 class="text-2xl flex flex-initial pl-2 dark_red shadow">Nether</h3>
+  <div class="w-full h-full pt-4">
+    <h3 class="text-5xl pl-2 dark_red shadow pb-1">Nether</h3>
     <NetherCompnent />
   </div>
-  <div class="w-full h-full">
-    <h3 class="text-2xl flex flex-initial pl-2 yellow shadow">End</h3>
+  <div class="w-full h-full pt-4">
+    <h3 class="text-5xl pl-2 yellow shadow pb-1">End</h3>
     <EndComponent />
   </div>
 </template>

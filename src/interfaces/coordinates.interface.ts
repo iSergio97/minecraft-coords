@@ -1,4 +1,5 @@
 export interface Coordinates {
+  id?: string;
   x: number;
   y: number | undefined; // Nether coords could be only x and z to nether portals tps
   z: number;

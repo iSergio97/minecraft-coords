@@ -1,15 +1,21 @@
 <template>
-  <div class="grid gap-4 grid-cols-4 p-2">
-    <CoordinatesComponent v-for="(coord, index) of endCords" :coord="coord" :key="index" />
+  <div
+    class="grid gap-4 grid-cols-2 xl:grid-cols-7 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-3 p-2"
+  >
+    <CoordinatesComponent
+      v-for="(coord, index) of endCoords"
+      :coord="coord"
+      :key="index"
+      @refreshData="refreshEnd"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
-import { initial_end_coords } from '@/data/coordinates';
-import type { Coordinates } from '@/interfaces/coordinates.interface';
 import CoordinatesComponent from '@/components/CoordinatesComponent.vue';
+import useCoords from '@/composables/useCoords';
 
-let endCords: Coordinates[] = initial_end_coords;
+const { endCoords, refreshEnd } = useCoords();
 </script>
 
 <style scoped>
