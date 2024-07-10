@@ -6,12 +6,12 @@ import { getFirestore, collection } from 'firebase/firestore';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: 'AIzaSyCan89w7U1z1Uet3AkZiCziDXvbo5dtBWw',
-  authDomain: 'minecraft-coords-eaaad.firebaseapp.com',
-  projectId: 'minecraft-coords-eaaad',
-  storageBucket: 'minecraft-coords-eaaad.appspot.com',
-  messagingSenderId: '425151945267',
-  appId: '1:425151945267:web:78790ea8b76d85af22a146'
+  apiKey: process.env.VUE_APP_API_KEY,
+  authDomain: process.env.VUE_APP_AUTH_DOMAIN,
+  projectId: process.env.VUE_APP_PROJECT_ID,
+  storageBucket: process.env.VUE_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.VUE_APP_MESSAGING_SENDER_ID,
+  appId: process.env.VUE_APP_API_ID
 };
 
 // Initialize Firebase
