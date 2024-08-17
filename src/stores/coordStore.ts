@@ -1,13 +1,14 @@
 import { defineStore } from 'pinia';
 import type { Coordinates } from '../interfaces/coordinates.interface';
-import { ref, type Ref } from 'vue';
+import { computed, ref, type Ref } from 'vue';
+import type { DocumentData } from 'firebase/firestore';
 
 export const coordStore = defineStore('coordStore', () => {
   const overworldCoords: Ref<Coordinates[]> = ref([]);
   const netherCoords: Ref<Coordinates[]> = ref([]);
   const endCoords: Ref<Coordinates[]> = ref([]);
 
-  const setOverworldCoords = (newData: any[]) => {
+  const setOverworldCoords = (newData: DocumentData[]) => {
     overworldCoords.value = newData.map((col) => {
       const c: Coordinates = {
         id: col.id,
@@ -21,7 +22,7 @@ export const coordStore = defineStore('coordStore', () => {
       return c;
     });
   };
-  const setNetherCoords = (newData: any[]) => {
+  const setNetherCoords = (newData: DocumentData[]) => {
     netherCoords.value = newData.map((col) => {
       const c: Coordinates = {
         id: col.id,
@@ -35,7 +36,7 @@ export const coordStore = defineStore('coordStore', () => {
       return c;
     });
   };
-  const setEndCoords = (newData: any[]) => {
+  const setEndCoords = (newData: DocumentData[]) => {
     endCoords.value = newData.map((col) => {
       const c: Coordinates = {
         id: col.id,
@@ -51,9 +52,9 @@ export const coordStore = defineStore('coordStore', () => {
   };
 
   return {
-    overworldCoords,
-    netherCoords,
-    endCoords,
+    overworldCoords: computed(() => overworldCoords.value),
+    netherCoords: computed(() => netherCoords.value),
+    endCoords: computed(() => endCoords.value),
 
     setOverworldCoords,
     setNetherCoords,

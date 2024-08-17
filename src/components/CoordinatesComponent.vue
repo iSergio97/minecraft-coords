@@ -78,8 +78,6 @@ const alias = computed(() => {
   return alias === '' ? 'Sin alias' : alias;
 });
 
-console.log(coord);
-
 let dialogOpenModal = ref(false);
 
 let openEditModal = (): void => {

@@ -128,16 +128,14 @@ const emit = defineEmits<Emits>();
 
 const { coord } = toRefs(props);
 
-let data = Object.assign({}, coord.value);
+let data = { ...coord.value };
 
 let close = () => {
   emit('close');
 };
 
-let save = () => {
-  saveCoords(data, data.id);
+let save = async () => {
+  await saveCoords(data, data.id);
   close();
 };
 </script>
-
-<style scoped></style>

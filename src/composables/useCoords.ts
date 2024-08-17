@@ -1,9 +1,9 @@
 import { coordStore } from '@/stores/coordStore';
 import { storeToRefs } from 'pinia';
-import { watch } from 'vue';
+import { watch, type Ref } from 'vue';
 
 import { db } from '@/firebase/config';
-import { collection } from 'firebase/firestore';
+import { collection, type DocumentData } from 'firebase/firestore';
 import { useCollection } from 'vuefire';
 
 const getCoords = (dbCollection: string) => {
@@ -15,9 +15,9 @@ const useCoords = () => {
   const store = coordStore();
   const { overworldCoords, netherCoords, endCoords } = storeToRefs(store);
 
-  let dataOW = getCoords('Overworld');
-  let dataNether = getCoords('Nether');
-  let dataEnd = getCoords('End');
+  const dataOW: Ref<DocumentData[]> = getCoords('Overworld');
+  const dataNether: Ref<DocumentData[]> = getCoords('Nether');
+  const dataEnd: Ref<DocumentData[]> = getCoords('End');
 
   watch(
     dataOW,
@@ -44,15 +44,15 @@ const useCoords = () => {
   );
 
   const refreshOW = (): void => {
-    dataOW = getCoords('Overworld');
+    dataOW.value = getCoords('Overworld').value;
   };
 
   const refreshNether = (): void => {
-    dataNether = getCoords('Nether');
+    dataNether.value = getCoords('Nether').value;
   };
 
   const refreshEnd = (): void => {
-    dataEnd = getCoords('End');
+    dataEnd.value = getCoords('End').value;
   };
 
   return {
